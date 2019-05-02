@@ -1,0 +1,29 @@
+{%extends 'base.html'%}
+{% load bootstrap3 %}
+
+{% block content %}
+<div class="container-fluid" id="upload">
+    <div class="container w3-padding">
+        <div class="row">
+        <div class="col-md-4 w3-text-white ">
+            <h3>Account</h3>
+            {% if profile.profile.profile_pic %}
+            <img src="{{profile.profile.profile_pic.url}}" alt="img" width="120px" height="120px ">
+            {% endif %}
+            <br>
+            <h6>Bio</h6>
+            <br>
+            <p>{{user.profile.Bio}}</p>
+        </div>
+
+        <div class="col-md-8 w3-text-white">
+            <form action="{% url 'update_profile' %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% bootstrap_form form %}
+                <input type="submit" class="btn w3-teal" value="Update">
+            </form>
+        </div>
+    </div>
+        </div>
+</div>
+{% endblock %}

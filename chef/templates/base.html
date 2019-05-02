@@ -1,0 +1,59 @@
+{% load bootstrap3 %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Personal Chef</title>
+</head>
+<body>
+
+{% block styles %}
+{% bootstrap_css %}
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<link href="https://fonts.googleapis.com/css?family=Anton|Caveat|Fjalla+One|Oswald" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/hood.css'%}">
+<link rel="stylesheet" href="{% static 'css/recipe.css'%}">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+<link href="https://fonts.googleapis.com/css?family=Anton|Fjalla+One|Oswald" rel="stylesheet">
+<link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+
+{% endblock %}
+{% include "navbar.html"%}
+
+
+{% block content%}
+
+
+{%endblock%}
+
+{% block scripts %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+{% bootstrap_javascript%}
+
+<script>
+
+window.onscroll = function() {myFunction()};
+function myFunction() {
+    var navbar = document.getElementById("myNavbar");
+    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        navbar.className = "w3-bar" + " w3-card" + " w3-animate-top" + " w3-white";
+    } else {
+        navbar.className = navbar.className.replace(" w3-card w3-animate-top w3-white", "");
+    }
+}
+
+
+</script>
+{% endblock %}
+
+
+</body>
+</html>

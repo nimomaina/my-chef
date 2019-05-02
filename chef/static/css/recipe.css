@@ -1,0 +1,10 @@
+#upload{
+ background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../images/cook.jpg');
+  min-height: 100vh;
+  brightness:(40%);
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}

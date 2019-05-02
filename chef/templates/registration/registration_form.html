@@ -1,0 +1,52 @@
+{%extends "registration/base.html"%}
+{% load bootstrap3 %}
+{%load static%}
+{% block content %}
+<div class="container-fluid  w3-text-white" id="register">
+
+    <div class="w3-row-padding">
+
+
+
+
+            <div class="w3-col l6 m12 w3-mobile w3-display-topmiddle">
+                                <img src="{% static 'images/cat1.png'%}" class="w3-center" style="height:100px;margin-left:40%;margin-right:40%">
+
+
+                {% if form.errors %}
+                <p> Some Information Might be Incorrect </p>
+                {% endif %}
+                <div class="w3-card-4">
+
+
+                    <header class="w3-container ">
+                    </header>
+                    <div class="w3-container">
+
+                        <form action="/accounts/register/" method="post" class="w3-container" id="form">
+                            {% csrf_token %}
+                            {% bootstrap_form form%}
+
+
+                            <div class="form-group">
+                                <input type="submit" class="w3-button w3-block w3-blue w3-round" value="Sign up">
+                            </div>
+
+                            <input type="hidden" name="next" value="{{next}}">
+
+                        </form>
+
+                        <p class="w3-center w3-opacity">By signing up, you agree to our <strong>Terms , Data
+                            Policy </strong> and <strong>Cookies Policy </strong>.</p>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+</div>
+
+
+    {% endblock %}

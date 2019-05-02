@@ -1,0 +1,60 @@
+{%extends "registration/base.html"%}
+{% load bootstrap3 %}
+{%load static%}
+
+{% block content %}
+<div class="container-fluid  w3-text-white" id="register">
+
+    <div class="w3-row-padding">
+
+        <div class="w3-col l6 m12 w3-mobile w3-display-topmiddle">
+                                <img src="{% static 'images/cat1.png'%}" class="w3-center" style="height:100px;margin-left:40%;margin-right:40%">
+            {% if form.errors %}
+            <p> Password or Username is incorrect </p>
+            {% endif %}
+            <div class="w3-card-4">
+
+
+                <header class="w3-container ">
+                    <hr>
+                </header>
+                <div class="w3-container">
+
+                    <form action="/accounts/login/" method="post" class="w3-container">
+                        {% csrf_token %}
+                                    {% bootstrap_form form%}
+
+
+
+                        <div class="form-group">
+                            <input type="submit" class="w3-button w3-block w3-teal w3-round" value="Login">
+                        </div>
+
+                        <input type="hidden" name="next" value="{{next}}">
+
+                    </form>
+
+                </div>
+
+            </div>
+
+            <div class="w3-card-4 w3-margin-top w3-padding">
+
+                <div class="w3-container w3-padding">
+                    <p class="w3-center"> Don't Have an account? <a href="/accounts/register">Sign Up</a> </p>
+
+                </div>
+
+            </div>
+
+        </div>
+         <div class="w3-col l2">
+
+        </div>
+
+
+    </div>
+</div>
+
+
+{% endblock %}

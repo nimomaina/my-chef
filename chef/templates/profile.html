@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+
+{% load bootstrap3 %}
+{% load static %}
+{% block content %}
+
+<div class="w3-display-container" style="max-height:300px">
+    <img src="{% static 'images/table.jpg' %}" alt="Lights" style="max-height:300px; width:100%; brightness:(30%)">
+
+    <div class="w3-display-middle w3-large">
+    </div>
+
+
+    <div class="w3-display-middle w3-container">
+        <p class="w3-padding" style="font-size: 20px;"><strong>Chef - {{profile.username}}</strong></p>
+
+        {% if profile.profile.profile_pic%}
+        <img src="{{profile.profile.profile_pic.url}}" width="100px" height="100px " alt=""
+             class="img-responsive" style="border-radius:50%">
+        {% endif %}
+    </div>
+</div>
+
+
+<div class="w3-container">
+    <div class="w3-row-padding w3-center">
+        <header>
+            <p style="font-size:24px">My <i class="w3-text-teal" style="font-family: 'Caveat', cursive; font-size:30px">Recipes</i>
+            </p>
+        </header>
+        {% for recipe in recipes %}
+        <div class="w3-col l3 m3 s3 ">
+            <div class="w3-card-2">
+                <header style="height:150px">
+                    <img src=" {{ recipe.screenshot.cdn_url }}" class="w3-center w3-image w3-center"
+                         style="min-height:100%; max-height:100%;min-width:100%">
+                </header>
+
+
+                <div class="w3-container w3-margin">
+
+
+                    <p>{{recipe.description | truncatechars:150 }}</p>
+
+
+                </div>
+            </div>
+
+
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<div class="w3-row">
+    <div class="w3-col l6">
+<div class="w3-card-4 w3-white w3-padding w3-margin " >
+    <header><h2>Contact Information</h2>
+        <hr>
+    </header>
+    <div class="w3-container w3-margin" style="min-height:265px" >
+
+        <p><i class="fas fa-at"></i> {{profile.email}}</p>
+        <hr>
+                {% if profile.profile.address%}
+
+        <p><i class="fas fa-map-marker-alt"></i> {{profile.profile.address}}</p>
+                {% else %}
+                <p><i class="fas fa-map-marker-alt"></i> Nairobi</p>
+
+                {% endif %}
+
+
+        <hr>
+                        {% if profile.profile.address%}
+
+        <p><i class="fas fa-phone"></i> {{profile.profile.phone_number}}</p>
+                        {% else %}
+                <p><i class="fas fa-phone"></i>0711223344</p>
+
+                        {% endif %}
+
+
+        <hr>
+    </div>
+
+
+</div>
+        </div>
+        <div class="w3-col l6">
+<div class="w3-card-4 w3-white w3-padding w3-margin ">
+
+     <div class="w3-container w3-margin" >
+
+     {% if profile.profile.address%}
+
+        <p><i class="fas fa-map-marker-alt"></i> {{profile.profile.address}}</p>
+                {% else %}
+                <p><i class="fas fa-map-marker-alt"></i> Nairobi</p>
+
+                {% endif %}
+
+    </div>
+    <header>
+        <img src="{% static 'images/location.png'%}" style="height:300px;min-width:100%">
+    </header>
+
+
+
+</div>
+        </div>
+</div>
+
+
+{% endblock %}

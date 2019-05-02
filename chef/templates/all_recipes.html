@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static%}
+
+{% block content %}
+
+
+<div class="w3-row w3-center" xmlns="http://www.w3.org/1999/html">
+    <header>
+
+    <form class="navbar-form" role="search" action="{% url 'search_results' %}">
+        <input type="text" name="search" placeholder="&#xF002;  Search Recipe" id="input" class="w3-input" style="font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;">
+    </form>
+        <p style="font-size:24px">All <i class="w3-text-teal" style="font-family: 'Caveat', cursive; font-size:30px">Recipes</i>
+        </p>
+    </header>
+    {% for recipe in recipes%}
+    <div class="w3-col l6">
+    <div class="w3-row">
+
+    <div class="w3-card-4 w3-white">
+
+        <div class="w3-col l6 m4 s6 ">
+
+<header class="w3-container">                     <h3>{{recipe.title}} Recipe</h3>
+</header>
+            <div class="w3-container" style="height:200px">
+
+                <img src=" {{ recipe.screenshot.cdn_url }}" class="w3-right w3-image "
+                     style="min-height:100%; max-height:100%">
+            </div>
+
+        </div>
+        <div class="w3-col l6 m4 s6">
+
+            <div class="w3-container w3-margin w3-left">
+    <h2 class=" w3-text-teal" style="font-family: 'Caveat', cursive;
+font-size:30px ">How To Prepare </h2>
+
+                <p >{{recipe.description}}</p>
+            </div>
+
+
+        </div>
+
+
+
+    </div>
+        </div>
+        </div>
+    {% endfor %}
+
+</div>
+
+
+{% endblock %}

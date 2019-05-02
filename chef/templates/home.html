@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{% load static%}
+
+{% block content %}
+
+
+<div class="w3-display-container bgimg-1 " id="home">
+
+    <div class="w3-display-middle w3-center">
+
+        <h2 class="w3-text-white" style="font-family: 'Anton', sans-serif; font-size:36px;
+">
+            Your Personal Chef </h2>
+        <h2 class="w3-text-white" style="font-family: 'Anton', sans-serif; font-size:20px; font-weight:5px;
+">
+            GET PERSONALIZED MEALS DELIVERED RIGHT TO YOUR DOOR</h2>
+
+    </div>
+
+
+</div>
+<div class="container">
+    <div class="w3-row w3-center w3-padding" >
+        <div class="w3-col l4 m4 s4 w3-border-right" >
+            <a href="{% url 'chefs'%}"><i class="fas fa-utensils fa-2x"></i>
+            <h3 class="" style="font-family: 'Anton', sans-serif; font-size:30px;
+"> Find a chef</h3></a>
+        </div>
+          <div class="w3-col l4 m4 s4 w3-border-right">
+               <a href="{% url 'recipes'%}"><i class="fas fa-mitten fa-2x"></i>
+              <h3 class="" style="font-family: 'Anton', sans-serif; font-size:30px;
+">Find Recipes</h3></a>
+
+        </div>
+          <div class="w3-col l4 m4 s4">
+              <i class="fas fa-mortar-pestle fa-2x"></i>
+              <h3 class="" style="font-family: 'Anton', sans-serif; font-size:30px;
+">Be Found</h3>
+
+        </div>
+
+    </div>
+    <hr>
+    <br>
+    <div class="w3-row-padding w3-center">
+        <header>
+            <p style="font-size:24px">featured <i class="w3-text-teal" style="font-family: 'Caveat', cursive;
+">chefs</i></p>
+        </header>
+        <hr>
+        {% for profile in profiles%}
+        <div class="w3-col l3 m3 s6 ">
+            <div class="w3-card-2">
+                <header style="height:100px">
+                                    {% if profile.profile_pic%}
+
+                     <img src=" {{ profile.profile_pic.url }}" class="w3-center w3-image w3-center"
+                         style="min-height:100%; max-height:100%">
+                 {% endif %}
+                </header>
+
+
+
+
+                <div class="w3-container w3-margin">
+                    <p><strong>Chef {{profile.user.username}}</strong></p>
+
+
+                    <p><a class="info w3-btn w3-round-xxlarge w3-teal" href="{% url 'profile' username=profile.user.username %}">
+                        See Profile </a></p>
+
+
+                </div>
+        </div>
+
+
+        </div>
+        {% endfor %}
+
+    </div>
+        <br>
+
+    <div class="w3-row-padding w3-center">
+        <header>
+            <p style="font-size:24px">featured <i class="w3-text-teal" style="font-family: 'Caveat', cursive; font-size:30px">Recipes</i></p>
+        </header>
+        <hr>
+        {% for recipe in recipes%}
+        <div class="w3-col l3 m3 s6 ">
+            <div class="w3-card-2">
+                <header style="height:100px">
+                     <img src=" {{ recipe.screenshot.cdn_url }}" class="w3-center w3-image w3-center"
+                         style="min-height:100%; max-height:100%">
+                </header>
+
+
+
+                <div class="w3-container w3-margin">
+
+
+                  <p>{{recipe.title}}</p>
+
+
+                </div>
+                </div>
+
+
+        </div>
+        {% endfor %}
+
+    </div>
+
+</div>
+
+{% endblock %}
